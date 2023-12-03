@@ -94,16 +94,16 @@
                                     intimate moments of
                                 </p>
                                 <h6 class="text-center mb-3 fw-normal">
-                                    -1 Dekade Gerakan Kendari Mengajar (GKM)-
+                                    {{$session_activity->title}}
                                 </h6>
                                 <h1 class="text-center mb-5 text-color2 font-text" style="max-width: 350px">
-                                    Bring Back Memories For The Future
+                                    {{$session_activity->tagline}}
                                 </h1>
                                 <div class="text-center fw-normal text-color2">
                                     With Pleasure
                                 </div>
                                 <div class="text-center fw-normal fs-5 mb-3">
-                                    Helson Mandala Putra
+                                    {{$participant?->name??"Nama Tamu"}}
                                 </div>
                             </div>
                         </div>
@@ -116,11 +116,11 @@
                                     <img src="{{asset('assets/10th_gkm_hitam.png')}}" height="110px">
                                 </div>
                                 <h6 class="text-center fw-normal">
-                                    -1 Dekade Gerakan Kendari Mengajar (GKM)-
+                                    {{$session_activity->title}}
                                 </h6>
                                 <div class="d-flex justify-content-center  w-100">
                                     <h3 class="text-center mb-3 text-color2 font-text" style="max-width: 350px">
-                                        Bring Back Memories For The Future
+                                        {{$session_activity->tagline}}
                                     </h3>
                                 </div>
                                 <div class="d-flex justify-content-center mb-3">
@@ -171,8 +171,8 @@
                                     </div>
                                 </div>
                                 <div class="text-center mb-3">
-                                    <div class="fw-normal fs-5 fw-bold text-color2">Villa Aksa Toronipa</div>
-                                    <div>(Pantai Toronipa, Provinsi Sulawesi Tenggara)</div>
+                                    <div class="fw-normal fs-5 fw-bold text-color2">{{$session_activity?->location}}</div>
+                                    <div>{{$session_activity?->sub_location}}</div>
                                 </div>
 
                             </div>
@@ -186,11 +186,11 @@
                                     <img src="{{asset('assets/10th_gkm_hitam.png')}}" height="100px">
                                 </div>
                                 <h6 class="text-center fw-normal">
-                                    -1 Dekade Gerakan Kendari Mengajar (GKM)-
+                                    {{$session_activity->title}}
                                 </h6>
                                 <div class="d-flex justify-content-center  w-100">
                                     <h3 class="text-center mb-3 text-color2 font-text" style="max-width: 350px">
-                                        Bring Back Memories For The Future
+                                        {{$session_activity->tagline}}
                                     </h3>
                                 </div>
                                 <div class="fs-3 text-center mb-3">
@@ -198,28 +198,28 @@
                                 </div>
                                 <div class="d-flex justify-content-center mb-3" >
                                     <div class="m-1 bg-success text-white text-center ps-4 pe-4 pt-1 pb-1 rounded">
-                                        <div class="fs-4 fw-bold">00</div>
+                                        <div class="fs-4 fw-bold" id="count_down_day">00</div>
                                         <div class="fs-6">
                                             Hari
                                         </div>
                                     </div>
 
                                     <div class="m-1 bg-success text-white text-center ps-4 pe-4 pt-1 pb-1 rounded">
-                                        <div class="fs-4 fw-bold">00</div>
+                                        <div class="fs-4 fw-bold" id="count_down_hour">00</div>
                                         <div class="fs-6">
                                             Jam
                                         </div>
                                     </div>
 
                                     <div class="m-1 bg-success text-white text-center ps-4 pe-4 pt-1 pb-1 rounded">
-                                        <div class="fs-4 fw-bold">00</div>
+                                        <div class="fs-4 fw-bold" id="count_down_minute">00</div>
                                         <div class="fs-6">
                                             Menit
                                         </div>
                                     </div>
 
                                     <div class="m-1 bg-success text-white text-center ps-4 pe-4 pt-1 pb-1 rounded">
-                                        <div class="fs-4 fw-bold">00</div>
+                                        <div class="fs-4 fw-bold" id="count_down_second">00</div>
                                         <div class="fs-6">
                                             Detik
                                         </div>
@@ -231,11 +231,14 @@
                                     untuk konfirmasi kehadiran
                                 </div>
                                 <div class="text-center mb-3">
-                                    <button class="btn btn-success mb-3" >
-                                        Klik Disini
-                                    </button>
-                                    <h6 class="text-danger">*Kontribusi 100K</h6>
-                                    <div>(Akomodasi, Merchandise, Konsumsi)</div>
+                                    @if($participant !== null)
+                                        <button class="btn btn-success mb-3" >
+                                            Klik Disini
+                                        </button>
+                                    @endif
+
+                                    <h6 class="text-danger">*Kontribusi {{$session_activity->contribution_text}}</h6>
+                                    <div>{{$session_activity->contribution_description}}</div>
                                 </div>
 
                                 <div class="mb-1">
@@ -278,11 +281,11 @@
                                     <img src="{{asset('assets/10th_gkm_hitam.png')}}" height="100px">
                                 </div>
                                 <h6 class="text-center fw-normal">
-                                    -1 Dekade Gerakan Kendari Mengajar (GKM)-
+                                    {{$session_activity->title}}
                                 </h6>
                                 <div class="d-flex justify-content-center  w-100">
                                     <h3 class="text-center mb-3 text-color2 font-text" style="max-width: 350px">
-                                        Bring Back Memories For The Future
+                                        {{$session_activity->tagline}}
                                     </h3>
                                 </div>
                                 <div id="map" class="mb-3 d-flex justify-content-center w-100">
@@ -293,8 +296,8 @@
                                 </div>
 
                                 <div class="text-center mb-3">
-                                    <div class="fw-normal fs-5 fw-bold text-color2">Villa Aksa Toronipa</div>
-                                    <div>(Pantai Toronipa, Provinsi Sulawesi Tenggara)</div>
+                                    <div class="fw-normal fs-5 fw-bold text-color2">{{$session_activity?->location}}</div>
+                                    <div>{{$session_activity?->sub_location}}</div>
                                 </div>
                             </div>
                         </div>
@@ -306,11 +309,11 @@
                                     <img src="{{asset('assets/10th_gkm_hitam.png')}}" height="100px">
                                 </div>
                                 <h6 class="text-center fw-normal">
-                                    -1 Dekade Gerakan Kendari Mengajar (GKM)-
+                                    {{$session_activity->title}}
                                 </h6>
                                 <div class="d-flex justify-content-center  w-100">
                                     <h3 class="text-center mb-3 text-color2 font-text" style="max-width: 350px">
-                                        Bring Back Memories For The Future
+                                        {{$session_activity->tagline}}
                                     </h3>
                                 </div>
                                     <div class="row ms-0 me-0 pswp-gallery pswp-gallery--single-column" id="gallery--getting-started">
@@ -424,8 +427,6 @@
 
                             </div>
                         </div>
-
-
                     </div>
                     <div class="tab-pane container fade h-100 p-0" id="thanks">
                         <div class="h-100 d-flex align-items-center justify-content-center  w-100">
@@ -520,16 +521,16 @@
                             intimate moments of
                         </p>
                         <h6 class="text-center mb-3 fw-normal">
-                            -1 Dekade Gerakan Kendari Mengajar (GKM)-
+                            {{$session_activity->title}}
                         </h6>
                         <h1 class="text-center mb-5 text-color2 font-text" style="max-width: 350px">
-                            Bring Back Memories For The Future
+                            {{$session_activity->tagline}}
                         </h1>
                         <div class="text-center fw-normal text-color2">
                             With Pleasure
                         </div>
                         <div class="text-center fw-normal fs-5 mb-3">
-                            Helson Mandala Putra
+                            {{$participant?->name??"Nama Tamu"}}
                         </div>
                         <div class="text-center">
                             <button class="btn btn-success" id="btnOpenInvitation" >
@@ -553,7 +554,12 @@
     const coverinvitation = document.getElementById("cover-invitation");
     const btnOpenInvitation = document.getElementById("btnOpenInvitation");
     const music  = document.getElementById("music");
-    const mobile = document.getElementById("mobile")
+    const mobile = document.getElementById("mobile");
+
+    const count_down_day = document.getElementById("count_down_day");
+    const count_down_hour = document.getElementById("count_down_hour");
+    const count_down_minute = document.getElementById("count_down_minute");
+    const count_down_second = document.getElementById("count_down_second");
 
     btnOpenInvitation.addEventListener("click", function (){
         coverinvitation.classList.add("fade")
@@ -589,6 +595,28 @@
             onClick: function(){} // Callback after click
         }).showToast();
     });
+
+    var countDownDate = new Date("{{date("M d, Y  H:i",strtotime($session_activity->date_start." ".$session_activity->time_start))}}");
+    var x = setInterval(function() {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        count_down_day.innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24));
+        count_down_hour.innerHTML = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        count_down_minute.innerHTML = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        count_down_second.innerHTML = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            // document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+    }, 1000);
 
 </script>
 </body>

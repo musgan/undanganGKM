@@ -11,4 +11,8 @@ class Participant extends Model
 
     protected $fillable = ['key','type','name','phone_number','total_member','will_attend'
         ,'total_paid','session_activity_id','paid_off'];
+
+    public function sessionActivity(){
+        return $this->belongsTo(SessionActivity::class,"session_activity_id","id");
+    }
 }
