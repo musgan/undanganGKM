@@ -114,6 +114,9 @@ class SessionActivityController extends Controller
     public function destroy($id, Request $request)
     {
         try{
+            if($id == 1)
+                throw new Exception("Tidak boleh menghapus data ini", 400);
+
             DB::beginTransaction();
             SessionActivity::find($id)->delete();
             DB::commit();
