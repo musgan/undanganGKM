@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\WelcomeController::class,"index"]);
-Route::get('/{key}', [\App\Http\Controllers\WelcomeController::class,"index"]);
 
 //Auth::routes();
 Route::get("login",[\App\Http\Controllers\Auth\LoginController::class,"showLoginForm"])->name("login");
@@ -40,6 +38,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         "destroy"    => "admin.participant.delete",
     ]);
 });
+
+Route::get('/', [\App\Http\Controllers\WelcomeController::class,"index"]);
+Route::get('/{key}', [\App\Http\Controllers\WelcomeController::class,"index"]);
 
 
 

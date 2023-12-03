@@ -90,6 +90,7 @@
                                                     @method("DELETE")
                                                     <a href="{{route("admin.participant.edit",$row->id)}}" class="btn btn-warning m-1">Edit</a>
                                                     <button type="submit" class="btn btn-danger">Delete</button>
+                                                    <a href="{{url("/".$row->key)}}" target="_blank" class="btn btn-info m-1">Link</a>
                                                 </form>
                                             </span>
                                         </td>
