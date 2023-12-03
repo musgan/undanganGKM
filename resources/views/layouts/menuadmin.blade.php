@@ -11,7 +11,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{{route("admin.sessionactivity.index")}}">SESI KEGIATAN</a></li>
-                <li><a class="dropdown-item" href="#">PESERTA UNDANGAN</a></li>
+                <li><a class="dropdown-item" href="{{route("admin.participant.index")}}">PESERTA UNDANGAN</a></li>
             </ul>
         </li>
     </ul>

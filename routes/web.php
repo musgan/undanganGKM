@@ -32,6 +32,14 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         "update"    => "admin.sessionactivity.update",
         "destroy"    => "admin.sessionactivity.delete",
     ]);
+    Route::resource('participant', \App\Http\Controllers\Admin\ParticipantController::class)->names([
+        "index" => "admin.participant.index",
+        "create"    => "admin.participant.create",
+        "edit"    => "admin.participant.edit",
+        "store"    => "admin.participant.store",
+        "update"    => "admin.participant.update",
+        "destroy"    => "admin.participant.delete",
+    ]);
 });
 
 
