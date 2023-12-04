@@ -232,7 +232,7 @@
                                 </div>
                                 <div class="text-center mb-3">
                                     @if($participant !== null)
-                                        <button class="btn btn-success mb-3" >
+                                        <button class="btn btn-success mb-3" id="btnKonfirmasiKehadiran" >
                                             Klik Disini
                                         </button>
                                     @endif
@@ -543,9 +543,42 @@
                 <img src="{{asset('assets/ornamen_undangan.png')}}" class="position-absolute top-0" height="100px" />
                 <img src="{{asset('assets/ornamen_hijau.png')}}"  class="position-absolute bottom-0 end-0" height="100px" />
             </div>
+
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 500px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Kehadiran</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Nama Undangan" readonly />
+                </div>
+                <div class="mb-3">
+                    <div class="input-group ">
+
+                        <input type="number" class="form-control " placeholder="Jumlah Peserta. Misalnya 1" />
+                        <span class="input-group-text" id="basic-addon2">Orang</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Nomor HP yang dapat dihubungi"  value="" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-primary">Saya Akan Hadir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script type="module">
@@ -560,6 +593,12 @@
     const count_down_hour = document.getElementById("count_down_hour");
     const count_down_minute = document.getElementById("count_down_minute");
     const count_down_second = document.getElementById("count_down_second");
+
+    const btnKonfirmasiKehadiran  = document.getElementById("btnKonfirmasiKehadiran");
+    btnKonfirmasiKehadiran.addEventListener("click", function (){
+        const myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {backdrop: 'static', keyboard: false});
+        myModal.show();
+    })
 
     btnOpenInvitation.addEventListener("click", function (){
         coverinvitation.classList.add("fade")
