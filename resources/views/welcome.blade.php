@@ -558,18 +558,23 @@
             </div>
             <div class="modal-body">
                 <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Nama Undangan" readonly />
+                    <input type="text" class="form-control" placeholder="Nama Undangan" value="{{$participant?->name}}" readonly />
                 </div>
                 <div class="mb-3">
                     <div class="input-group ">
 
-                        <input type="number" class="form-control " placeholder="Jumlah Peserta. Misalnya 1" />
+                        <input type="number" class="form-control " placeholder="Jumlah Peserta. Misalnya 1" value="{{$participant?->total_member}}" />
                         <span class="input-group-text" id="basic-addon2">Orang</span>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Nomor HP yang dapat dihubungi"  value="" />
+                    <input type="text" class="form-control" placeholder="Nomor HP yang dapat dihubungi"  value="{{$participant?->phone_number}}" />
                 </div>
+                <div class="d-flex justify-content-end">
+                    <h5><span class="badge bg-success fw-normal d-none" id="status-kehadiran-ok">Telah diverifikasi</span></h5>
+                    <h5><span class="badge bg-warning fw-normal d-none" id="status-kehadiran-wait">Menunggu Konfirmasi</span></h5>
+                </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
@@ -594,11 +599,29 @@
     const count_down_minute = document.getElementById("count_down_minute");
     const count_down_second = document.getElementById("count_down_second");
 
+    const statusKehadiranOk = document.getElementById("status-kehadiran-ok");
+    const statusKehadiranWait = document.getElementById("status-kehadiran-wait");
+    const statusKehadiran = "{{$status}}";
+    updateStatusKehadiran();
+
+    function updateStatusKehadiran(){
+        if(statusKehadiran === "ok"){
+            statusKehadiranOk.classList.remove("d-none")
+        }else if(statusKehadiran === "wait"){
+            statusKehadiranWait.classList.remove("d-none")
+        }
+    }
+
     const btnKonfirmasiKehadiran  = document.getElementById("btnKonfirmasiKehadiran");
-    btnKonfirmasiKehadiran.addEventListener("click", function (){
-        const myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {backdrop: 'static', keyboard: false});
-        myModal.show();
-    })
+    if(btnKonfirmasiKehadiran) {
+        btnKonfirmasiKehadiran.addEventListener("click", function () {
+            const myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {
+                backdrop: 'static',
+                keyboard: false
+            });
+            myModal.show();
+        })
+    }
 
     btnOpenInvitation.addEventListener("click", function (){
         coverinvitation.classList.add("fade")
