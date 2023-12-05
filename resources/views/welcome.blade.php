@@ -7,12 +7,13 @@
     <meta name="keywords" content="GKM, Kendari, Gerakan Kendari Mengajar, undangan">
     <meta name="robots" content="index, follow">
 
+    <title>{{$session_activity?->title}}</title>
     <meta property="og:title" content="{{$session_activity?->title}}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{url("")}}" />
     <meta property="og:image" content="{{asset("assets/icon.png")}}" />
+    <meta property="og:description" content="{{$session_activity?->tagline}}" />
 
-    <title>{{$session_activity?->title}}</title>
     <link rel="icon" type="image/x-icon" href="{{asset("assets/icon.png")}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
