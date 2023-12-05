@@ -545,6 +545,17 @@
                 <img alt="" src="{{asset('assets/ornamen_hijau.png')}}"  class="position-absolute bottom-0 end-0" height="100px" />
             </div>
 
+            <div id="loading" class="d-none w-100 h-100 d-flex align-items-center justify-content-center  position-absolute top-0" style="background-color: #ffffffba">
+                <div class="text-center">
+                    <div class="mb-5 text-c">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <h5>Loading</h5>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
@@ -560,6 +571,7 @@
             <form method="POST" action="{{url("confirmation-of-attendance")}}" id="confirmation-of-attendance">
                 @csrf
                 <input type="hidden" name="session_activity_id" value="1">
+                <input type="hidden" name="key" value="{{$participant?->key??null}}">
                 <div class="modal-body">
                     <div class="mb-3">
                         <input type="text" name="name" class="form-control" placeholder="Nama Undangan" value="{{$participant?->name}}" required/>
@@ -575,8 +587,8 @@
                         <input type="text" name="phone_number" class="form-control" placeholder="Nomor HP yang dapat dihubungi"  value="{{$participant?->phone_number}}" required/>
                     </div>
                     <div class="d-flex justify-content-end">
-                        <h5><span class="badge bg-success fw-normal d-none" id="status-kehadiran-ok">Telah diverifikasi</span></h5>
-                        <h5><span class="badge bg-warning fw-normal d-none" id="status-kehadiran-wait">Menunggu Konfirmasi</span></h5>
+                        <h6><span class="p-2 bg-success fw-normal d-none text-white" id="status-kehadiran-ok">Telah diverifikasi</span></h6>
+                        <h6><span class="p-2 bg-warning fw-normal d-none" id="status-kehadiran-wait">Menunggu Konfirmasi</span></h6>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -590,8 +602,14 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="module">
     import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.js';
+
+    const myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {
+        backdrop: 'static',
+        keyboard: false
+    });
 
     const coverinvitation = document.getElementById("cover-invitation");
     const btnOpenInvitation = document.getElementById("btnOpenInvitation");
@@ -607,6 +625,7 @@
     const statusKehadiranWait = document.getElementById("status-kehadiran-wait");
     const statusKehadiran = "{{$status}}";
     const confirmOfAttendance = document.getElementById("confirmation-of-attendance");
+    const loading = document.getElementById("loading")
     updateStatusKehadiran();
 
     function updateStatusKehadiran(){
@@ -619,20 +638,16 @@
 
     const btnKonfirmasiKehadiran  = document.getElementById("btnKonfirmasiKehadiran");
     btnKonfirmasiKehadiran.addEventListener("click", function () {
-        const myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {
-            backdrop: 'static',
-            keyboard: false
-        });
         myModal.show();
     })
 
-    // confirmOfAttendance.addEventListener("submit",confirmOfAttedance)
+    confirmOfAttendance.addEventListener("submit",confirmDialogConfirmOfAttedance)
 
     function confirmOfAttedance(e){
         e.preventDefault();
         const data = serializeForm(e.target);
         const url = "{{url("confirmation-of-attendance")}}";
-
+        loading.classList.remove("d-none");
         fetch(url,{
             method: "POST",
             body: JSON.stringify(data),
@@ -653,13 +668,41 @@
                 return Promise.reject(response);
             })
             .then(function (response){
-                console.log("response", response)
+                swal("Terimakasih telah mengkonfirmasi kehadiran anda")
+                    .then((value) =>{
+                        console.log("response",response)
+                        window.location.href = `{{url("")}}/${(response?.data?.key??null)}`;
+                    });
             })
             .catch(function (error){
                 console.log(error)
+                Toastify({
+                    text: error?.message??"Gagal melakukan konfirmasi kehadiran",
+                    duration: 3000,
+                    style: {
+                        background: "#d90429",
+                    },
+                }).showToast();
             })
             .finally(function (){
-
+                loading.classList.add("d-none");
+            });
+    }
+    function confirmDialogConfirmOfAttedance(e){
+        e.preventDefault()
+        swal("Apakah data yang anda kirimkan sudah benar untuk mengkonfirmasi kehadiran anda?", {
+            buttons: {
+                cancel: "Tutup",
+                Ya: true
+            },
+        })
+            .then((value) => {
+                switch (value) {
+                    case "Ya":
+                        myModal.hide()
+                        confirmOfAttedance(e)
+                        break;
+                }
             });
     }
     var serializeForm = function (form) {

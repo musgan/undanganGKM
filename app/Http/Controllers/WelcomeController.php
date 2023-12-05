@@ -27,7 +27,7 @@ class WelcomeController extends Controller
         if($participant !==null){
             if($participant->paid_off === 1 && $participant->will_attend){
                 $status = "ok";
-            }if($participant->paid_off === 0 && $participant->will_attend){
+            }if(($participant->paid_off === 0 || $participant->paid_off === null) && $participant->will_attend){
                 $status = "wait";
             }
         }
@@ -45,23 +45,16 @@ class WelcomeController extends Controller
             }else{
                 $result = $this->insertNewConfirmation($request);
             }
-            $status = null;
-            if($result !== null){
-                if($result->paid_off == 1 && $result->will_attend == 1){
-                    $status = "ok";
-                }else if($result->will_attend == 1 && $result->paid_off == 0){
-                    $status = "wait";
-                }
-            }
+            $request->session()->flash('show_notif_status', 'Task was successful!');
             DB::commit();
             return response()->json([
-                'status'    => $status
+                'data'    => $result
             ]);
         }catch (Exception $e){
             DB::rollBack();
             return response()->json([
                 'message'    => $e->getMessage()
-            ], 500);
+            ], 400);
         }
     }
 
@@ -70,8 +63,9 @@ class WelcomeController extends Controller
         $data->will_attend = 1;
         if($data == null)
             throw new Exception("link undangan anda salah",500);
+        $data->update($request->all());
 
-        return $data->update($request->all());
+        return Participant::where('key',$request->key)->first();
     }
 
     function insertNewConfirmation(ParticipantRequest $request){

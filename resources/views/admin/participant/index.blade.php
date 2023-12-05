@@ -50,7 +50,8 @@
                         <h5 class="card-header fw-normal pt-3 pb-3">Peserta Undangan</h5>
 
                         <div class="card-body">
-                            <table class="table table-bordered table-hover" id="dataTable">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover" id="dataTable">
                                 <thead>
                                 <tr>
                                     <th class="text-center">Nama</th>
@@ -98,6 +99,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            </div>
                         </div>
                     </div>
                 @endif
