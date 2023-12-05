@@ -9,6 +9,7 @@ use App\Models\SessionActivity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use App\Helper\GenerateHelper;
 use Illuminate\View\View;
 
 class ParticipantController extends Controller
@@ -58,7 +59,7 @@ class ParticipantController extends Controller
     {
         //
         $all = $request->all();
-        $all["key"] = $this->generateKey($request->session_activity_id);
+        $all["key"] = GenerateHelper::generateKeyParticipant($request->session_activity_id);
         try{
             DB::beginTransaction();
             $id = Participant::create($all)->id;
@@ -72,18 +73,6 @@ class ParticipantController extends Controller
         }
     }
 
-    function generateKey($session_activity_id){
-        $key = "";
-        $listKey = Participant::where('session_activity_id',$session_activity_id)->pluck('key')->toArray();
-        $isCheck = true;
-        while ($isCheck){
-            $key = $session_activity_id.(Str::random(7));
-            if(!in_array($key, $listKey)){
-                $isCheck = false;
-            }
-        }
-        return $key;
-    }
 
     /**
      * Display the specified resource.

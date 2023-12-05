@@ -509,10 +509,10 @@
             </div>
 
 
-            <div id="cover-invitation" class="bg-white h-100 w-100 position-absolute left-0 top-0" style="background-image: url('assets/bg_hijau.png'); background-size: cover">
+            <div id="cover-invitation" class="bg-white h-100 w-100 position-absolute left-0 top-0" style="background-image: url('{{asset("assets/bg_hijau2.jpg")}}'); background-size: cover">
                 <div class="h-100 d-flex align-items-center justify-content-center">
 
-                    <div class="position-relative  text-success">
+                    <div class="position-relative  text-black">
                         <div class="text-center mb-3">
                             <img src="{{asset('assets/logo.png')}}" height="110px" width="110px">
                         </div>

@@ -55,7 +55,7 @@
                                 <tr>
                                     <th class="text-center">Nama</th>
                                     <th class="text-center">Nomor HP</th>
-                                    <th class="text-center">Jumlah Member/ Anggota</th>
+                                    <th class="text-center">Jumlah Peserta</th>
                                     <th class="text-center">Apakah Hadir ?</th>
                                     <th class="text-center">Jumlah Dibayarkan</th>
                                     <th class="text-center">Lunas</th>
