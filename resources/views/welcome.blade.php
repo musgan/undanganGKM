@@ -11,7 +11,7 @@
     <meta property="og:title" content="{{$session_activity?->title}}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{url("")}}" />
-    <meta property="og:image" content="{{asset("assets/icon.png")}}" />
+    <meta property="og:image" content="{{asset("assets/preview_image_seo.jpg")}}" />
     <meta property="og:description" content="{{$session_activity?->tagline}}" />
 
     <link rel="icon" type="image/x-icon" href="{{asset("assets/icon.png")}}">
