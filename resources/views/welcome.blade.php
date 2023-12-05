@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>1 Dekade GKM</title>
+    <meta name="description" content="{{$session_activity?->tagline}}">
+    <meta name="keywords" content="GKM, Kendari, Gerakan Kendari Mengajar, undangan">
+    <meta name="robots" content="index, follow">
+    <title>{{$session_activity?->title}}</title>
+    <link rel="icon" type="image/x-icon" href="{{asset("assets/icon.png")}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe.min.css" integrity="sha512-LFWtdAXHQuwUGH9cImO9blA3a3GfQNkpF2uRlhaOpSbDevNyK1rmAjs13mtpjvWyi+flP7zYWboqY+8Mkd42xA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -40,7 +44,7 @@
         }
         .nav-tabs .nav-link{
             border: none;
-            border-radius: 0px;
+            border-radius: 0;
         }
         .nav-tabs .nav-link:hover,.nav-tabs .nav-link.active{
             background-color: #359166;
@@ -78,8 +82,8 @@
         <div id="mobile" class="col-sm-12 position-relative ps-0 pe-0">
             <div class="content w-100 position-relative">
 
-                <img src="{{asset('assets/ornamen_undangan.png')}}" class="position-absolute top-0" height="100px">
-                <img src="{{asset('assets/ornamen_hijau.png')}}"  class="position-absolute bottom-0 end-0" height="100px">
+                <img alt="" src="{{asset('assets/ornamen_undangan.png')}}" class="position-absolute top-0" height="100px">
+                <img alt="" src="{{asset('assets/ornamen_hijau.png')}}"  class="position-absolute bottom-0 end-0" height="100px">
 
                 <div class="tab-content h-100">
                     <div class="tab-pane container active h-100" id="opening">
@@ -87,17 +91,17 @@
 
                             <div class="position-relative  text-success">
                                 <div class="text-center mb-3">
-                                    <img src="{{asset('assets/logo.png')}}" height="110px" width="110px">
+                                    <img alt="" src="{{asset('assets/logo.png')}}" height="110px" width="110px">
                                 </div>
                                 <p class="text-center fs-6 mb-5">
                                     A pleasure to invite you to an<br />
                                     intimate moments of
                                 </p>
                                 <h6 class="text-center mb-3 fw-normal">
-                                    {{$session_activity->title}}
+                                    {{$session_activity?->title}}
                                 </h6>
                                 <h1 class="text-center mb-5 text-color2 font-text" style="max-width: 350px">
-                                    {{$session_activity->tagline}}
+                                    {{$session_activity?->tagline}}
                                 </h1>
                                 <div class="text-center fw-normal text-color2">
                                     With Pleasure
@@ -113,14 +117,14 @@
                             <div class="position-relative   text-success w-100 overflow-auto p-3" style="height: calc(100% - 50px)">
 
                                 <div class="text-center mb-3">
-                                    <img src="{{asset('assets/10th_gkm_hitam.png')}}" height="110px">
+                                    <img alt="" src="{{asset('assets/10th_gkm_hitam.png')}}" height="110px">
                                 </div>
                                 <h6 class="text-center fw-normal">
-                                    {{$session_activity->title}}
+                                    {{$session_activity?->title}}
                                 </h6>
                                 <div class="d-flex justify-content-center  w-100">
                                     <h3 class="text-center mb-3 text-color2 font-text" style="max-width: 350px">
-                                        {{$session_activity->tagline}}
+                                        {{$session_activity?->tagline}}
                                     </h3>
                                 </div>
                                 <div class="d-flex justify-content-center mb-3">
@@ -183,14 +187,14 @@
                         <div class="h-100 justify-content-center  w-100">
                             <div class="w-100 position-relative overflow-auto" style="padding-top: 20px; height: calc(100% - 20px)">
                                 <div class="text-center mb-3">
-                                    <img src="{{asset('assets/10th_gkm_hitam.png')}}" height="100px">
+                                    <img alt="" src="{{asset('assets/10th_gkm_hitam.png')}}" height="100px">
                                 </div>
                                 <h6 class="text-center fw-normal">
-                                    {{$session_activity->title}}
+                                    {{$session_activity?->title}}
                                 </h6>
                                 <div class="d-flex justify-content-center  w-100">
                                     <h3 class="text-center mb-3 text-color2 font-text" style="max-width: 350px">
-                                        {{$session_activity->tagline}}
+                                        {{$session_activity?->tagline}}
                                     </h3>
                                 </div>
                                 <div class="fs-3 text-center mb-3">
@@ -231,14 +235,11 @@
                                     untuk konfirmasi kehadiran
                                 </div>
                                 <div class="text-center mb-3">
-                                    @if($participant !== null)
-                                        <button class="btn btn-success mb-3" id="btnKonfirmasiKehadiran" >
-                                            Klik Disini
-                                        </button>
-                                    @endif
-
-                                    <h6 class="text-danger">*Kontribusi {{$session_activity->contribution_text}}</h6>
-                                    <div>{{$session_activity->contribution_description}}</div>
+                                    <button class="btn btn-success mb-3" id="btnKonfirmasiKehadiran" >
+                                        Klik Disini
+                                    </button>
+                                    <h6 class="text-danger">*Kontribusi {{$session_activity?->contribution_text}}</h6>
+                                    <div>{{$session_activity?->contribution_description}}</div>
                                 </div>
 
                                 <div class="mb-1">
@@ -278,21 +279,21 @@
                         <div class="h-100 d-flex justify-content-center  w-100">
                             <div class="w-100 position-relative overflow-auto" style="padding-top: 20px; height: calc(100% - 20px)">
                                 <div class="text-center mb-3">
-                                    <img src="{{asset('assets/10th_gkm_hitam.png')}}" height="100px">
+                                    <img alt=""  src="{{asset('assets/10th_gkm_hitam.png')}}" height="100px">
                                 </div>
                                 <h6 class="text-center fw-normal">
-                                    {{$session_activity->title}}
+                                    {{$session_activity?->title}}
                                 </h6>
                                 <div class="d-flex justify-content-center  w-100">
                                     <h3 class="text-center mb-3 text-color2 font-text" style="max-width: 350px">
-                                        {{$session_activity->tagline}}
+                                        {{$session_activity?->tagline}}
                                     </h3>
                                 </div>
                                 <div id="map" class="mb-3 d-flex justify-content-center w-100">
                                     <iframe style="border-color:#0d4e30 !important;" class="border border-5 w-100 h-100 m-2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.5231060098463!2d122.66135407571704!3d-3.91178634413405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d98e917391e2a79%3A0xa37b17506433f85f!2sAksa%20Villa%20Toronipa!5e0!3m2!1sid!2sid!4v1701317510003!5m2!1sid!2sid" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                 </div>
                                 <div class="p-3 text-end mb-3">
-                                    <a class="text-decoration-none text-color2 fw-normal" href="https://www.instagram.com/villa.aksa/" target="_blank"><img height="20px" src="assets/icon_instagram.png"> @villa.aksa</a>
+                                    <a class="text-decoration-none text-color2 fw-normal" href="https://www.instagram.com/villa.aksa/" target="_blank"><img alt="" height="20px" src="{{asset("assets/icon_instagram.png")}}"> @villa.aksa</a>
                                 </div>
 
                                 <div class="text-center mb-3">
@@ -306,14 +307,14 @@
                         <div class="h-100 d-flex justify-content-center  w-100">
                             <div  class="w-100 position-relative overflow-auto" style="padding-top: 20px; height: calc(100%)">
                                 <div class="text-center mb-3">
-                                    <img src="{{asset('assets/10th_gkm_hitam.png')}}" height="100px">
+                                    <img alt=""  src="{{asset('assets/10th_gkm_hitam.png')}}" height="100px">
                                 </div>
                                 <h6 class="text-center fw-normal">
-                                    {{$session_activity->title}}
+                                    {{$session_activity?->title}}
                                 </h6>
                                 <div class="d-flex justify-content-center  w-100">
                                     <h3 class="text-center mb-3 text-color2 font-text" style="max-width: 350px">
-                                        {{$session_activity->tagline}}
+                                        {{$session_activity?->tagline}}
                                     </h3>
                                 </div>
                                     <div class="row ms-0 me-0 pswp-gallery pswp-gallery--single-column" id="gallery--getting-started">
@@ -514,17 +515,17 @@
 
                     <div class="position-relative  text-black">
                         <div class="text-center mb-3">
-                            <img src="{{asset('assets/logo.png')}}" height="110px" width="110px">
+                            <img alt=""  src="{{asset('assets/logo.png')}}" height="110px" width="110px">
                         </div>
                         <p class="text-center fs-6 mb-5">
                             A pleasure to invite you to an<br />
                             intimate moments of
                         </p>
                         <h6 class="text-center mb-3 fw-normal">
-                            {{$session_activity->title}}
+                            {{$session_activity?->title}}
                         </h6>
                         <h1 class="text-center mb-5 text-color2 font-text" style="max-width: 350px">
-                            {{$session_activity->tagline}}
+                            {{$session_activity?->tagline}}
                         </h1>
                         <div class="text-center fw-normal text-color2">
                             With Pleasure
@@ -540,8 +541,8 @@
                     </div>
                 </div>
 
-                <img src="{{asset('assets/ornamen_undangan.png')}}" class="position-absolute top-0" height="100px" />
-                <img src="{{asset('assets/ornamen_hijau.png')}}"  class="position-absolute bottom-0 end-0" height="100px" />
+                <img alt="" src="{{asset('assets/ornamen_undangan.png')}}" class="position-absolute top-0" height="100px" />
+                <img alt="" src="{{asset('assets/ornamen_hijau.png')}}"  class="position-absolute bottom-0 end-0" height="100px" />
             </div>
 
         </div>
@@ -556,30 +557,33 @@
                 <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Kehadiran</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Nama Undangan" value="{{$participant?->name}}" readonly />
-                </div>
-                <div class="mb-3">
-                    <div class="input-group ">
+            <form method="POST" action="{{url("confirmation-of-attendance")}}" id="confirmation-of-attendance">
+                @csrf
+                <input type="hidden" name="session_activity_id" value="1">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <input type="text" name="name" class="form-control" placeholder="Nama Undangan" value="{{$participant?->name}}" required/>
+                    </div>
+                    <div class="mb-3">
+                        <div class="input-group ">
 
-                        <input type="number" class="form-control " placeholder="Jumlah Peserta. Misalnya 1" value="{{$participant?->total_member}}" />
-                        <span class="input-group-text" id="basic-addon2">Orang</span>
+                            <input type="number" name="total_member" class="form-control " placeholder="Jumlah Peserta. Misalnya 1" value="{{$participant?->total_member}}" required/>
+                            <span class="input-group-text" id="basic-addon2">Orang</span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" name="phone_number" class="form-control" placeholder="Nomor HP yang dapat dihubungi"  value="{{$participant?->phone_number}}" required/>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <h5><span class="badge bg-success fw-normal d-none" id="status-kehadiran-ok">Telah diverifikasi</span></h5>
+                        <h5><span class="badge bg-warning fw-normal d-none" id="status-kehadiran-wait">Menunggu Konfirmasi</span></h5>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Nomor HP yang dapat dihubungi"  value="{{$participant?->phone_number}}" />
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary">Saya Akan Hadir</button>
                 </div>
-                <div class="d-flex justify-content-end">
-                    <h5><span class="badge bg-success fw-normal d-none" id="status-kehadiran-ok">Telah diverifikasi</span></h5>
-                    <h5><span class="badge bg-warning fw-normal d-none" id="status-kehadiran-wait">Menunggu Konfirmasi</span></h5>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
-                <button type="button" class="btn btn-primary">Saya Akan Hadir</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -602,6 +606,7 @@
     const statusKehadiranOk = document.getElementById("status-kehadiran-ok");
     const statusKehadiranWait = document.getElementById("status-kehadiran-wait");
     const statusKehadiran = "{{$status}}";
+    const confirmOfAttendance = document.getElementById("confirmation-of-attendance");
     updateStatusKehadiran();
 
     function updateStatusKehadiran(){
@@ -613,15 +618,58 @@
     }
 
     const btnKonfirmasiKehadiran  = document.getElementById("btnKonfirmasiKehadiran");
-    if(btnKonfirmasiKehadiran) {
-        btnKonfirmasiKehadiran.addEventListener("click", function () {
-            const myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {
-                backdrop: 'static',
-                keyboard: false
-            });
-            myModal.show();
+    btnKonfirmasiKehadiran.addEventListener("click", function () {
+        const myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {
+            backdrop: 'static',
+            keyboard: false
+        });
+        myModal.show();
+    })
+
+    // confirmOfAttendance.addEventListener("submit",confirmOfAttedance)
+
+    function confirmOfAttedance(e){
+        e.preventDefault();
+        const data = serializeForm(e.target);
+        const url = "{{url("confirmation-of-attendance")}}";
+
+        fetch(url,{
+            method: "POST",
+            body: JSON.stringify(data),
+            mode: "cors", // no-cors, *cors, same-origin
+            cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: "same-origin", // include, *same-origin, omit
+            headers: {
+                "Content-Type": "application/json",
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            redirect: "follow", // manual, *follow, error
+            referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
         })
+            .then(function (response){
+                if (response.ok) {
+                    return response.json();
+                }
+                return Promise.reject(response);
+            })
+            .then(function (response){
+                console.log("response", response)
+            })
+            .catch(function (error){
+                console.log(error)
+            })
+            .finally(function (){
+
+            });
     }
+    var serializeForm = function (form) {
+        var obj = {};
+        var formData = new FormData(form);
+        for (var key of formData.keys()) {
+            obj[key] = formData.get(key);
+        }
+        return obj;
+    };
 
     btnOpenInvitation.addEventListener("click", function (){
         coverinvitation.classList.add("fade")

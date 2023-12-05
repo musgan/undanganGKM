@@ -39,6 +39,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     ]);
 });
 
+
+Route::post("confirmation-of-attendance",[\App\Http\Controllers\WelcomeController::class,"confirmationOfAttendance"]);
 Route::get('/', [\App\Http\Controllers\WelcomeController::class,"index"]);
 Route::get('/{key}', [\App\Http\Controllers\WelcomeController::class,"index"]);
 

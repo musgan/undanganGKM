@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Helper\GenerateHelper;
 use Illuminate\View\View;
+use Exception;
 
 class ParticipantController extends Controller
 {
