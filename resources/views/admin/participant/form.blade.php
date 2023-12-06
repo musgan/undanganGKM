@@ -38,7 +38,7 @@
 </div>
 
 <div class="mb-3">
-    <label class="form-label">Apakah Hadir</label>
+    <label class="form-label">Apakah akan  Hadir?</label>
     <div class="form-check">
         <input class="form-check-input" type="radio" name="will_attend" value="" id="flexRadioDefault1" @checked(($will_attend??null) === null)>
         <label class="form-check-label" for="flexRadioDefault1">
@@ -71,7 +71,7 @@
 </div>
 
 <div class="mb-3">
-    <label class="form-label">Lunas</label>
+    <label class="form-label">Apakah Sudah Lunas?</label>
 
     <div class="form-check">
         <input class="form-check-input" type="radio" name="paid_off" value="1"  @checked(($paid_off??old('paid_off')) == 1)>
