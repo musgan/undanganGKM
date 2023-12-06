@@ -25,9 +25,9 @@ class WelcomeController extends Controller
         }
 
         if($participant !==null){
-            if($participant->paid_off === 1 && $participant->will_attend){
+            if($participant->paid_off == 1 && $participant->will_attend){
                 $status = "ok";
-            }if(($participant->paid_off === 0 || $participant->paid_off === null) && $participant->will_attend){
+            }if(($participant->paid_off == 0 || $participant->paid_off === null) && $participant->will_attend){
                 $status = "wait";
             }
         }
