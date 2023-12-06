@@ -23,3 +23,4 @@
         </div>
     </div>
 @endsection
+@include("admin.participant.form_js")

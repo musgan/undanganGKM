@@ -64,7 +64,8 @@
 
 <div class="mb-3">
     <label class="form-label">Jumlah Dibayarkan</label>
-    <input type="number" class="form-control" name="total_paid" value="{{$total_paid??old('total_paid')}}"  />
+    <input type="number" class="form-control mb-2" id="total_paid" name="total_paid" value="{{$total_paid??old('total_paid')}}"  />
+    <h6 id="total_paid_text"></h6>
     @error('total_paid')
     <div class="text-danger">{{ $message }}</div>
     @enderror

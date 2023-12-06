@@ -75,10 +75,10 @@
                                             {!! $row->total_member !!}
                                         </td>
                                         <td class="text-center">
-                                            {!! textWillAttend($row->will_attend) !!}
+                                            {!! textWillAttend($row->will_attend); !!}
                                         </td>
                                         <td class="text-end">
-                                            {!! $row->total_paid !!}
+                                            {!! number_format($row->total_paid,0,",",'.') !!}
                                         </td>
                                         <td class="text-center">
                                             {!! textPaidOff($row->paid_off)  !!}
