@@ -74,13 +74,13 @@
     <label class="form-label">Lunas</label>
 
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="paid_off" value="1"  @checked(($paid_off??old('paid_off')) === 1)>
+        <input class="form-check-input" type="radio" name="paid_off" value="1"  @checked(($paid_off??old('paid_off')) == 1)>
         <label class="form-check-label" for="flexRadioDefault2">
             Ya
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="paid_off" value="0" @checked(($paid_off??(old('paid_off')??0)) === 0)>
+        <input class="form-check-input" type="radio" name="paid_off" value="0" @checked(($paid_off??(old('paid_off')??0)) == 0)>
         <label class="form-check-label" for="flexRadioDefault3">
             Tidak
         </label>

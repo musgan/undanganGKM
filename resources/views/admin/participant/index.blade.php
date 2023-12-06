@@ -3,15 +3,15 @@
 @section('content')
     <?php
         function textWillAttend($var){
-            if($var === null)
+            if($var == null)
                 return "Belum konfirmasi";
-            else if ($var === 1)
+            else if ($var == 1)
                 return "Hadir";
             else
                 return "Tidak Hadir";
         }
         function textPaidOff($var){
-            if ($var === 1)
+            if ($var == 1)
                 return "Lunas";
             else
                 return "Belum di Bayar";
