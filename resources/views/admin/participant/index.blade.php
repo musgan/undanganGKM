@@ -5,7 +5,7 @@
         function textWillAttend($var){
             if($var === null)
                 return "Belum konfirmasi";
-            elseif ($var === 1)
+            else if ($var === 1)
                 return "Hadir";
             else
                 return "Tidak Hadir";

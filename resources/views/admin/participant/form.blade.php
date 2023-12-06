@@ -46,13 +46,13 @@
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="will_attend" value="1" id="flexRadioDefault2" @checked(($will_attend??old('will_attend')) === 1)>
+        <input class="form-check-input" type="radio" name="will_attend" value="1" id="flexRadioDefault2" @checked(($will_attend??old('will_attend')) == 1)>
         <label class="form-check-label" for="flexRadioDefault2">
             Ya
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="will_attend" value="0" id="flexRadioDefault3" @checked(($will_attend??old('will_attend')) === 0)>
+        <input class="form-check-input" type="radio" name="will_attend" value="0" id="flexRadioDefault3" @checked(($will_attend??old('will_attend')) == 0)>
         <label class="form-check-label" for="flexRadioDefault3">
             Tidak
         </label>
