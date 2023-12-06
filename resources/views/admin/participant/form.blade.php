@@ -40,19 +40,19 @@
 <div class="mb-3">
     <label class="form-label">Apakah akan  Hadir?</label>
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="will_attend" value="" id="flexRadioDefault1" @checked(($will_attend??null) === null)>
+        <input class="form-check-input" type="radio" name="will_attend" value="" id="flexRadioDefault1" @checked(($will_attend??old('will_attend')) == "")>
         <label class="form-check-label" for="flexRadioDefault1">
             Belum Konfirmasi
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="will_attend" value="1" id="flexRadioDefault2" @checked(($will_attend??old('will_attend')) == 1)>
+        <input class="form-check-input" type="radio" name="will_attend" value="1" id="flexRadioDefault2" @checked(($will_attend??old('will_attend')) == "1")>
         <label class="form-check-label" for="flexRadioDefault2">
             Ya
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="will_attend" value="0" id="flexRadioDefault3" @checked(($will_attend??old('will_attend')) == 0)>
+        <input class="form-check-input" type="radio" name="will_attend" value="0" id="flexRadioDefault3" @checked(($will_attend??old('will_attend')) == "0")>
         <label class="form-check-label" for="flexRadioDefault3">
             Tidak
         </label>
@@ -74,13 +74,13 @@
     <label class="form-label">Apakah Sudah Lunas?</label>
 
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="paid_off" value="1"  @checked(($paid_off??old('paid_off')) == 1)>
+        <input class="form-check-input" type="radio" name="paid_off" value="1"  @checked(($paid_off??old('paid_off')) == "1")>
         <label class="form-check-label" for="flexRadioDefault2">
             Ya
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="paid_off" value="0" @checked(($paid_off??(old('paid_off')??0)) == 0)>
+        <input class="form-check-input" type="radio" name="paid_off" value="0" @checked(($paid_off??(old('paid_off')??"0")) == "0")>
         <label class="form-check-label" for="flexRadioDefault3">
             Tidak
         </label>

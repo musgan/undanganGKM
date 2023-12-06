@@ -14,7 +14,7 @@
                             @include("admin.participant.form",$data)
                         </div>
                         <div class="card-footer d-flex justify-content-center">
-                            <a href="{{route("admin.participant.index")}}" class="m-2 btn btn-secondary">KEMBALI</a>
+                            <a href="{{route("admin.participant.index")."?session_activity_id=".$data?->session_activity_id}}" class="m-2 btn btn-secondary">KEMBALI</a>
                             <button type="submit" class="btn btn-primary m-2">SIMPAN</button>
                         </div>
                     </form>

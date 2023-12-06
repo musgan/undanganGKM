@@ -133,10 +133,12 @@ class ParticipantController extends Controller
     {
         try{
             DB::beginTransaction();
-            Participant::find($id)->delete();
+            $q = Participant::find($id);
+            $session_activity_id = $q->session_activity_id;
+            $q->delete();
             DB::commit();
             $request->session()->flash('success', 'Berhasil menghapus data');
-            return redirect(url('admin/participant'));
+            return redirect(url('admin/participant?session_activity_id='.$session_activity_id));
         }catch (Exception $e){
             DB::rollBack();
             $request->session()->flash('error', $e->getMessage());
