@@ -89,7 +89,7 @@
                                         <td class="text-center">
 
                                             <span>
-                                                <form class="delete" action="{{route("admin.participant.delete",$row->id)}}" method="POST">
+                                                <form onsubmit="return confirm('Apakah anda ingin menghapus data terpilih?')" class="delete" action="{{route("admin.participant.delete",$row->id)}}" method="POST">
                                                     @csrf
                                                     @method("DELETE")
                                                     <a href="{{route("admin.participant.edit",$row->id)}}" class="btn btn-warning m-1">Edit</a>
@@ -115,12 +115,12 @@
     <script type="text/javascript">
         new DataTable('#dataTable');
 
-        $(".delete").on('submit',function(e){
-            if(confirm("Apakah anda ingin menghapus data terpilih?")){
-                return true;
-            }else{
-                e.preventDefault()
-            }
-        })
+        // $(".delete").on('submit',function(e){
+        //     if(confirm("Apakah anda ingin menghapus data terpilih?")){
+        //         return true;
+        //     }else{
+        //         e.preventDefault()
+        //     }
+        // })
     </script>
 @endsection
