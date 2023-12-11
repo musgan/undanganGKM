@@ -22,7 +22,7 @@
             <div class="col-md-12">
                 @include("admin.component.message")
                 <div class="d-flex justify-content-end mb-3">
-                    <a class="btn btn-primary" href="{{route("admin.participant.create")}}"><i class="fa-solid fa-plus"></i> Tambah</a>
+                    <a class="btn btn-primary m-2" href="{{route("admin.participant.create")}}"><i class="fa-solid fa-plus"></i> Tambah</a>
                 </div>
                 <div class="card mb-3">
                     <h5 class="card-header fw-normal pt-3 pb-3">Filter</h5>
@@ -50,6 +50,9 @@
                         <h5 class="card-header fw-normal pt-3 pb-3">Peserta Undangan</h5>
 
                         <div class="card-body">
+                            <div class="text-end">
+                                <a class="btn btn-success mb-3" href="{{url(route('admin.participant.download','session_activity_id='.$session_activity_id))}}"><i class="fa-solid fa-file-excel"></i> Download</a>
+                            </div>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover" id="dataTable">
                                 <thead>

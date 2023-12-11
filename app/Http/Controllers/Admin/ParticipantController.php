@@ -13,6 +13,10 @@ use App\Helper\GenerateHelper;
 use Illuminate\View\View;
 use Exception;
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class ParticipantController extends Controller
 {
     /**
@@ -144,5 +148,70 @@ class ParticipantController extends Controller
             $request->session()->flash('error', $e->getMessage());
             return redirect(url('admin/participant'));
         }
+    }
+
+    function getDataParticipant($session_activity_id){
+        $data = Participant::where('session_activity_id',$session_activity_id)
+            ->orderBy('paid_off','desc')
+            ->orderBy('name','asc')
+            ->get();
+        return $data;
+    }
+
+    function textWillAttend($var){
+        if($var == null)
+            return "Belum konfirmasi";
+        else if ($var == 1)
+            return "Hadir";
+        else
+            return "Tidak Hadir";
+    }
+    function textPaidOff($var){
+        if ($var == 1)
+            return "Lunas";
+        else
+            return "Belum di Bayar";
+    }
+
+    function writeParticipant(Worksheet $sheet, $session_activity_id){
+        $data = $this->getDataParticipant($session_activity_id);
+        $sheet->setCellValue('A1', 'No');
+        $sheet->setCellValue('B1', 'Nama');
+        $sheet->setCellValue('C1', 'Nomor HP');
+        $sheet->setCellValue('D1', 'Jumlah Peserta');
+        $sheet->setCellValue('E1', 'Apakah Hadir ?');
+        $sheet->setCellValue('F1', 'Jumlah Dibayarkan');
+        $sheet->setCellValue('G1', 'Lunas');
+        $rowExcel = 2;
+        $no = 0;
+        foreach($data as $row){
+            $no+=1;
+            $sheet->setCellValue('A'.$rowExcel, $no);
+            $sheet->setCellValue('B'.$rowExcel, $row->name);
+            $sheet->setCellValue('C'.$rowExcel, "'".$row->phone_number);
+            $sheet->setCellValue('D'.$rowExcel, $row->total_member);
+            $sheet->setCellValue('E'.$rowExcel, $this->textWillAttend($row->will_attend));
+            $sheet->setCellValue('F'.$rowExcel, $row->total_paid);
+            $sheet->setCellValue('G'.$rowExcel, $this->textPaidOff($row->paid_off));
+            $rowExcel+=1;
+        }
+    }
+
+    public function download(Request $request){
+
+        if($request->get("session_activity_id") == null)
+            return;
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $this->writeParticipant($sheet, $request->get('session_activity_id'));
+
+        $writer = new Xlsx($spreadsheet);
+        // We'll be outputting an excel file
+        header('Content-type: application/vnd.ms-excel');
+// It will be called file.xls
+        header('Content-Disposition: attachment; filename="data-partisipan.xlsx"');
+// Write file to the browser
+        $writer->save('php://output');
     }
 }

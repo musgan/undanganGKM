@@ -37,6 +37,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         "update"    => "admin.participant.update",
         "destroy"    => "admin.participant.delete",
     ]);
+    Route::get("download",[\App\Http\Controllers\Admin\ParticipantController::class,"download"])->name("admin.participant.download");
 });
 
 
