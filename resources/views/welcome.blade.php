@@ -107,9 +107,11 @@
                                 <h6 class="text-center mb-3 fw-normal">
                                     {{$session_activity?->title}}
                                 </h6>
-                                <h1 class="text-center mb-5 text-color2 font-text" style="max-width: 350px">
-                                    {{$session_activity?->tagline}}
-                                </h1>
+                                <div class="d-flex justify-content-center w-100">
+                                    <h1 class="text-center mb-5 text-color2 font-text" style="max-width: 350px">
+                                        {{$session_activity?->tagline}}
+                                    </h1>
+                                </div>
                                 <div class="text-center fw-normal text-color2">
                                     With Pleasure
                                 </div>
@@ -531,9 +533,11 @@
                         <h6 class="text-center mb-3 fw-normal">
                             {{$session_activity?->title}}
                         </h6>
-                        <h1 class="text-center mb-5 text-color2 font-text" style="max-width: 350px">
-                            {{$session_activity?->tagline}}
-                        </h1>
+                        <div class="d-flex justify-content-center w-100">
+                            <h1 class="text-center mb-5 text-color2 font-text" style="max-width: 350px">
+                                {{$session_activity?->tagline}}
+                            </h1>
+                        </div>
                         <div class="text-center fw-normal text-color2">
                             With Pleasure
                         </div>
